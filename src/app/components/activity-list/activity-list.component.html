@@ -1,0 +1,15 @@
+<h2>Here are your Events!</h2>
+
+<div> 
+  <div *ngFor = "let activity of activities"> 
+    <div>
+        <p>Host: {{activity.host}}</p> 
+        <p>Activity Name: {{activity.name}}</p> 
+        <p>Members: {{activity.members}}</p> 
+        <p>State: {{activity.state}}</p> 
+        <a [routerLink]="['activity', activity._id]"> View Details </a>
+    </div>
+  </div> 
+</div>
+
+<p><a [routerLink]="['/']">Back to HomePage</a></p>
