@@ -5,9 +5,8 @@
     <div>
         <p>Host: {{activity.host}}</p> 
         <p>Activity Name: {{activity.name}}</p> 
-        <p>Members: {{activity.members}}</p> 
-        <p>State: {{activity.state}}</p> 
-        <a [routerLink]="['activity', activity._id]"> View Details </a>
+        <p>State: {{activity.state}}</p>
+        <a [routerLink]="['/activity', activity._id]"> View Details </a>
     </div>
   </div> 
 </div>

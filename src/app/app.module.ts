@@ -12,6 +12,7 @@ import { AddActivityComponent } from './components/add-activity/add-activity.com
 import { ActivityService } from './services/activity.service';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ActivityDetailsComponent } from './components/activity-details/activity-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpModule } from '@angular/http';
     ActivityListComponent,
     ActivityComponent,
     HomeComponent,
-    AddActivityComponent
+    AddActivityComponent,
+    ActivityDetailsComponent
   ],
   imports: [
     BrowserModule,
