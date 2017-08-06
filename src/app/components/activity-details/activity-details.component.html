@@ -1,0 +1,15 @@
+<h2>Details for {{activity._id}}</h2>
+<h2>Event Name: {{activity.name}}</h2>
+<p>Host: {{activity.host}}</p>
+<div *ngIf="activity.members.length">
+<h4>Members</h4>
+<ul>
+  <li *ngFor="let member of activity.members">
+    {{member}}
+  </li>
+</ul>
+</div>
+<p>State: {{activity.state}}</p>
+<button (click)="deleteActivity()"> Delete </button>
+
+<p><a [routerLink]="['/activity']">Back</a></p>

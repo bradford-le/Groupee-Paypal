@@ -3,29 +3,30 @@
 </p>
 
 <form (ngSubmit)="submitForm()" #myForm="ngForm">
-    <div class="form-group">
-      <label for="name">Host Name:</label>
-      <input type="text" class="form-control" id="name" placeholder="Host Name" [(ngModel)]="activity.host" name="activity.host">
-    </div>
-    <br>
-    <div class="form-group">
-      <label for="activityName">Activity Name:</label>
-      <input type="text" class="form-control" id="activityName" placeholder="Activity Name" [(ngModel)]="activity.name" name="activity.name">
-    </div>
-    <br>
-    <div class="form-group">
-      <label for="state">State:</label>
-      <input type="text" class="form-control" id="state" placeholder="State" [(ngModel)]="activity.state" name="activity.state">
-    </div>
-    <br>
-    <div class="form-group">
-      <label for="members">Members:</label>
-      <input type="text" class="form-control" id="members" placeholder="Members" [(ngModel)]="member" name="member">
-    </div>
-    <br>
-    <button type="submit" class="btn btn-default">Add</button>
+  <div>
+    <label for="name">Host Name:</label>
+    <input type="text" id="name" placeholder="Host Name" [(ngModel)]="activity.host" name="activity.host">
+  </div>
+  <div>
+    <label for="activityName">Activity Name:</label>
+    <input type="text" id="activityName" placeholder="Activity Name" [(ngModel)]="activity.name" name="activity.name">
+  </div>
+  <div>
+    <label for="state">State:</label>
+    <input type="text" id="state" placeholder="State" [(ngModel)]="activity.state" name="activity.state">
+  </div>
+  <div>
+    <label for="member">Members:</label>
+    <input type="text" id="member" placeholder="Member" [(ngModel)]="member" name="member">
+  </div>
   </form>
   <button class="btn btn-default" (click)="addMember()">Add Member</button>
-  <span class="label label-default" *ngFor="let member of activity.members">{{ member }}</span>
+  <ol>
+      <li *ngFor="let member of activity.members">
+        {{member}}
+      </li>
+    </ol>
+  <button type="submit" class="btn btn-default">Save Event</button>
+  
 
 <p><a [routerLink]="['/']">Back to HomePage</a></p>
