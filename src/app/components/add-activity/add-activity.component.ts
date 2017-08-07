@@ -16,6 +16,13 @@ export class AddActivityComponent implements OnInit {
   };
   member = '';
 
+  states=[
+   {name: "OPEN", view: "OPEN"},
+   {name: "REQUEST PAYMENTS",view: "REQUEST PAYMENTS"},
+   {name: "PAYOUTS",view: "SENDING PAYOUTS"},
+   {name: "DONE",view: "DONE"}
+  ];
+
   constructor(private activityAPI: ActivityService,private router: Router) { }
 
   ngOnInit() {

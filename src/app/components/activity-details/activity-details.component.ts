@@ -14,6 +14,13 @@ export class ActivityDetailsComponent implements OnInit {
   constructor(private activityApi: ActivityService, private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
+    this.activity = {
+      host:'',
+      name:'',
+      members: [],
+      state:'',
+      payments:[]
+    };
     this.route.params.subscribe(params => {
       this.getActivityDetails(params['id']);
     });
@@ -29,6 +36,7 @@ export class ActivityDetailsComponent implements OnInit {
 
   deleteActivity(){
     if(window.confirm('Are you sure?')) {
+      console.log('delete',this.activity._id);
       this.activityApi.remove(this.activity._id)
         .subscribe(()=>{
           this.router.navigate(['']);
