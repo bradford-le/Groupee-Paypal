@@ -5,6 +5,7 @@
     <div>
         <p>Host: {{activity.host}}</p> 
         <p>Activity Name: {{activity.name}}</p> 
+        <p>#of Members: {{activity.members.length}}</p>
         <p>State: {{activity.state}}</p>
         <a [routerLink]="['/activity', activity._id]"> View Details </a>
     </div>

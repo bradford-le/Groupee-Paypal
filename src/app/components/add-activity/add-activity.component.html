@@ -13,20 +13,22 @@
   </div>
   <div>
     <label for="state">State:</label>
-    <input type="text" id="state" placeholder="State" [(ngModel)]="activity.state" name="activity.state">
+    <select name="activity.state" [(ngModel)]="activity.state">
+        <option *ngFor="let state of states" [ngValue]="state.name">{{state.view}}</option>
+    </select>
   </div>
   <div>
     <label for="member">Members:</label>
     <input type="text" id="member" placeholder="Member" [(ngModel)]="member" name="member">
   </div>
+  <button type="submit" class="btn btn-default">Save Event</button>
   </form>
   <button class="btn btn-default" (click)="addMember()">Add Member</button>
   <ol>
       <li *ngFor="let member of activity.members">
         {{member}}
       </li>
-    </ol>
-  <button type="submit" class="btn btn-default">Save Event</button>
+  </ol>
   
 
 <p><a [routerLink]="['/']">Back to HomePage</a></p>
