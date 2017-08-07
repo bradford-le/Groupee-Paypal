@@ -9,7 +9,15 @@ import {ActivityService } from '../../services/activity.service';
 })
 export class ActivityDetailsComponent implements OnInit {
 
-  activity: any;
+  activity: any;s
+  member ='';
+
+  states=[
+    {name: "OPEN", view: "OPEN"},
+    {name: "REQUEST PAYMENTS",view: "REQUEST PAYMENTS"},
+    {name: "PAYOUTS",view: "SENDING PAYOUTS"},
+    {name: "DONE",view: "DONE"}
+   ];
   
   constructor(private activityApi: ActivityService, private route: ActivatedRoute,private router:Router) { }
 
@@ -41,6 +49,30 @@ export class ActivityDetailsComponent implements OnInit {
         .subscribe(()=>{
           this.router.navigate(['']);
         });
+    }
+  }
+
+  addMember() {
+    this.activity.members.push(this.member);
+    this.member = '';
+  }
+
+  submitForm(){
+    console.log(this.activity);
+    this.activityApi.edit(this.activity)
+      .subscribe(()=>{
+        //or put if statement here to route to Paypal API?
+        // example if state change this.router.navigate(['/paypalCreate'])??
+        this.router.navigate(['/activity']);
+      });
+    console.log(this.activity.state);
+    if(this.activity.state === "REQUEST PAYMENTS"){
+      console.log("FIRE OFF ALGORITHM!");
+      //How can we call paypal API?
+    } else if(this.activity.state === "PAYOUTS"){
+      console.log("FIRE OFF PAYOUTS PAYPAL");
+    } else if(this.activity.state === "DONE"){
+      console.log("Make event uneditable");
     }
   }
 }
