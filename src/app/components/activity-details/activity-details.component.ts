@@ -10,6 +10,15 @@ import {ActivityService } from '../../services/activity.service';
 export class ActivityDetailsComponent implements OnInit {
 
   activity: any;
+  newActivity: any;
+  member ='';
+
+  states=[
+    {name: "OPEN", view: "OPEN"},
+    {name: "REQUEST PAYMENTS",view: "REQUEST PAYMENTS"},
+    {name: "PAYOUTS",view: "SENDING PAYOUTS"},
+    {name: "DONE",view: "DONE"}
+   ];
   
   constructor(private activityApi: ActivityService, private route: ActivatedRoute,private router:Router) { }
 
@@ -42,5 +51,18 @@ export class ActivityDetailsComponent implements OnInit {
           this.router.navigate(['']);
         });
     }
+  }
+
+  addMember() {
+    this.activity.members.push(this.member);
+    this.member = '';
+  }
+
+  submitForm(){
+    console.log(this.activity);
+    this.activityApi.edit(this.activity)
+      .subscribe(()=>{
+        this.router.navigate(['activity']);
+      });
   }
 }

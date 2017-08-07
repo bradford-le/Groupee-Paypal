@@ -1,15 +1,31 @@
-<h2>Details for {{activity._id}}</h2>
-<h2>Event Name: {{activity.name}}</h2>
-<p>Host: {{activity.host}}</p>
-<div *ngIf="activity.members.length">
-<h4>Members</h4>
-<ul>
-  <li *ngFor="let member of activity.members">
-    {{member}}
-  </li>
-</ul>
-</div>
-<p>State: {{activity.state}}</p>
+<form (ngSubmit)="submitForm()" #myForm="ngForm">
+  <div>
+    <label for="name">Host Name:</label>
+    <input type="text" id="name" placeholder="Host Name" [(ngModel)]="activity.host" name="activity.host">
+  </div>
+  <div>
+    <label for="activityName">Activity Name:</label>
+    <input type="text" id="activityName" placeholder="Activity Name" [(ngModel)]="activity.name" name="activity.name">
+  </div>
+  <div>
+    <label for="state">State:</label>
+    <select name="activity.state" [(ngModel)]="activity.state">
+        <option *ngFor="let state of states" [ngValue]="state.name">{{state.view}}</option>
+    </select>
+  </div>
+  <div>
+    <label for="member">Members:</label>
+    <input type="text" id="member" placeholder="Member" [(ngModel)]="member" name="member">
+  </div>
+  <button type="submit">Save Changes</button>
+  </form>
+  <button class="btn btn-default" (click)="addMember()">Add Member</button>
+  <ol>
+      <li *ngFor="let member of activity.members">
+        {{member}}
+      </li>
+  </ol>
+
 <button (click)="deleteActivity()"> Delete </button>
 
 <p><a [routerLink]="['/activity']">Back</a></p>
