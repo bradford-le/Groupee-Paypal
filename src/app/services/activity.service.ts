@@ -24,7 +24,7 @@ BASE_URL: string = "http://localhost:3000";
   }
 
   edit(activity) {
-    return this.http.put(`${this.BASE_URL}/api/activity/${activity.id}`,activity)
+    return this.http.put(`${this.BASE_URL}/api/activity/${activity._id}`,activity)
       .map((res)=> res.json());
   }
   
